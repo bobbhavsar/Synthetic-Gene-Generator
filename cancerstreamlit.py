@@ -4,6 +4,9 @@ import streamlit as st
 import numpy as np
 import py3Dmol
 import requests
+import base64
+from shap import Explanation
+import shap
 
 models = joblib.load('models.pkl')
 genes = joblib.load('genes.pkl')
@@ -71,6 +74,8 @@ if st.button("Predict"):
     st.write("Top Predicted Treatments:")
     for drug, score in results[:10]:
         st.write(f"{drug} - Predicted Sensitivity: {score:.2%}")
+        
+
 
 #FOLDINGGG
 with st.expander("See Gene Folding Structure"):
